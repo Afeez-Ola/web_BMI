@@ -11,7 +11,7 @@ def calculateBMI(height, weight):
     return bmi
 
 
-def bmi_categories(bmi):
+def categorize_bmi(bmi):
     if bmi < 18.5:
         category = "You are underweight"
     elif bmi < 24:
