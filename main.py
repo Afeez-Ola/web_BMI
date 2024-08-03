@@ -31,7 +31,7 @@ def main():
             height = float(request.form["height"])
             weight = float(request.form["weight"])
             bmi = int(calculateBMI(height, weight))
-            category = bmi_categories(bmi)
+            category = categorize_bmi(bmi)
             result = {
                 "bmi": bmi,
                 "category": category
