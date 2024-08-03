@@ -26,16 +26,19 @@ def bmi_categories(bmi):
 @app.route("/", methods=["GET", "POST"])
 def main():
     result = None
-    if request.method == "POST":
-        height = float(request.form["height"])
-        weight = float(request.form["weight"])
-        bmi = int(calculateBMI(height, weight))
-        category = bmi_categories(bmi)
-        result = {
-            "bmi": bmi,
-            "category": category
-        }
-        print(result)
+    try:
+        if request.method == "POST":
+            height = float(request.form["height"])
+            weight = float(request.form["weight"])
+            bmi = int(calculateBMI(height, weight))
+            category = bmi_categories(bmi)
+            result = {
+                "bmi": bmi,
+                "category": category
+            }
+            print(result)
+    except ValueError as error:
+        result = {"error": str(error)}
     return render_template("index.html", result=result)
 
 
