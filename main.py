@@ -5,6 +5,11 @@ os.getcwd()
 
 app = Flask(__name__)
 
+def getInputs():
+    total_bill = float(input("What was the total bill: "))
+    total_tip = float(input("What is the total tip: "))
+    number_of_people = int(input("How many people to split with: "))
+
 
 @app.route("/", methods=["GET", "POST"])
 def main():
