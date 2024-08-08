@@ -19,6 +19,10 @@
         <input type="number" id="tip-percentage" name="tip-percentage" class="border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
       </div>
       <div>
+        <label for="number-of-people" class="block font-medium mb-1">Number of People</label>
+        <input type="number" id="number-of-people" name="number-of-people" class="border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      </div>
+      <div>
         <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md w-full">Calculate Tip</button>
       </div>
     </form>
@@ -26,6 +30,7 @@
     <div class="mt-4 text-center">
       <p>Tip Amount: ${{ tip_amount|round(2) }}</p>
       <p>Total Amount: ${{ total_amount|round(2) }}</p>
+      <p>Total Amount Per Person: ${{ amount_per_person|round(2) }}</p>
     </div>
     {% endif %}
   </div>
