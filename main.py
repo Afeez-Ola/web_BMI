@@ -7,15 +7,18 @@ app = Flask(__name__)
 
 
 def getInputs():
-    total_bill = float(input("What was the total bill: "))
-    total_tip = float(input("What is the total tip: "))
+    bill_amount = float(input("What was the total bill: "))
+    tip_percentage = float(input("What is the total tip: "))
     number_of_people = int(input("How many people to split with: "))
 
-    return total_tip,total_bill,number_of_people
+    return tip_percentage,bill_amount,number_of_people
 
 def tip_calculations():
-    total_tip, total_bill, number_of_people = getInputs()
+    tip_percentage, bill_amount, number_of_people = getInputs()
 
+    total_tip = bill_amount * (tip_percentage / 100)
+    total_bill = total_tip + bill_amount
+    return total_bill
 
 @app.route("/", methods=["GET", "POST"])
 def main():
