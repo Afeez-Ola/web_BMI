@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px; }
-        form { display: flex; flex-direction: column; }
-        input, button { margin: 10px 0; padding: 5px; }
-        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-        .result { margin-top: 20px; font-weight: bold; }
-        .error { color: red; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>BMI Calculator</h1>
-    <form method="POST">
-        <label for="height">Height (m):</label>
-        <input type="number" id="height" name="height" step="0.01" placeholder="Enter your height (m)" required>
-        <label for="weight">Weight (kg):</label>
-        <input type="number" id="weight" name="weight" placeholder="Enter your weight (kg)" step="0.1" required>
-        <button type="submit">Calculate BMI</button>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-md">
+    <h1 class="text-2xl font-bold mb-4">Tip Calculator</h1>
+    <form method="post" class="space-y-4">
+      <div>
+        <label for="bill-amount" class="block font-medium mb-1">Bill Amount</label>
+        <input type="number" id="bill-amount" name="bill-amount" class="border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      </div>
+      <div>
+        <label for="tip-percentage" class="block font-medium mb-1">Tip Percentage</label>
+        <input type="number" id="tip-percentage" name="tip-percentage" class="border-gray-300 rounded-md w-full py-2 px-3 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+      </div>
+      <div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-md w-full">Calculate Tip</button>
+      </div>
     </form>
-    {% if result %}
-        {% if result.error %}
-            <p class="error">{{ result.error }}</p>
-        {% else %}
-            <div class="result">
-                <p>Your BMI is: {{ result.bmi }}</p>
-                <p>Category: {{ result.category }}</p>
-            </div>
-        {% endif %}
+    {% if tip_amount is defined and total_amount is defined %}
+    <div class="mt-4 text-center">
+      <p>Tip Amount: ${{ tip_amount|round(2) }}</p>
+      <p>Total Amount: ${{ total_amount|round(2) }}</p>
+    </div>
     {% endif %}
+  </div>
 </body>
 </html>
