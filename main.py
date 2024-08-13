@@ -23,7 +23,7 @@ def tip_calculations(tip_percentage, bill_amount, number_of_people):
 
 @app.route("/", methods=["GET", "POST"])
 def main():
-    total_bill, total_tip, amount_per_person = None
+    total_bill, total_tip, amount_per_person = None, None, None
     if request.method == "POST":
         bill_amount = request.form["bill-amount"]
         tip_percentage = request.form["tip-percentage"]
@@ -31,7 +31,8 @@ def main():
 
         total_bill, total_tip, amount_per_person = tip_calculations(tip_percentage, bill_amount, number_of_people)
 
-    return render_template("index.html", total_bill=total_bill, total_tip=total_tip,amount_per_person=amount_per_person)
+    return render_template("index.html", total_bill=total_bill, total_tip=total_tip,
+                           amount_per_person=amount_per_person)
 
 
 if __name__ == "__main__":
